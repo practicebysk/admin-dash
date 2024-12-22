@@ -1,0 +1,216 @@
+<div class="main-bg-color">
+  <div class="flex flex-mobile">
+    <div class="chart-wrapper">
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+      >
+      </canvas>
+    </div>
+    <div class="bitcoin-div">
+      <div class="barr">
+        <canvas id="the-bar"></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crypto Base</h5>
+        </div>
+        <div class="modal-body">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Chose coin</mat-label>
+              <mat-select [(value)]="selected">
+                <mat-option
+                  *ngFor="let coin of coins"
+                  [value]="coin?.current_price + '€'"
+                >
+                  {{ coin.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="flex">
+            <div>
+              <mat-form-field
+                class="example-full-width"
+                id="amount"
+                appearance="outline"
+              >
+                <mat-label>Amount</mat-label>
+                <input matInput value="1" readonly />
+              </mat-form-field>
+            </div>
+            <div class="modal_price">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Price</mat-label>
+                <input matInput [value]="selected || null" readonly />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="flex">
+            <span class="material-symbols-outlined shield"> shield </span>
+            <p class="modal-txt">
+              Your card is safe and secured, prices will be charged on your
+              account.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button mat-raised-button data-dismiss="modal" class="m-1">
+            Close
+          </button>
+          <button mat-raised-button color="accent" class="m-1">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="coin-table-div">
+    <div class="coins">
+      <div class="flex">
+        <div>
+          <p>Crypto trades</p>
+        </div>
+        <div>
+          <div class="button-buy">
+            <button
+              mat-raised-button
+              color="accent"
+              type="button"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Buy crypto
+            </button>
+          </div>
+        </div>
+        <div
+          *ngIf="isLoading"
+          class="spinner-border text-primary"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <hr />
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col" class="mobile-none">Symbol</th>
+            <th scope="col">Price</th>
+            <th scope="col" class="mobile-none">
+              <span class="material-symbols-outlined"> cached </span> 24h
+              <span class="material-symbols-outlined high">
+                arrow_drop_up
+              </span>
+            </th>
+            <th scope="col" class="mobile-none">
+              <span class="material-symbols-outlined"> cached </span> 24h
+              <span class="material-symbols-outlined low">
+                arrow_drop_down
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let coin of coins | paginate: { itemsPerPage: 10, currentPage: p }
+            "
+          >
+            <th scope="row"><img [src]="coin.image" width="30px" alt="" /></th>
+            <td class="mobile-none symbol_res">
+              {{ coin.symbol | uppercase }}
+            </td>
+            <td class="price_res">{{ coin.current_price + "€" }}</td>
+            <td class="mobile-none high_res">
+              {{ "+" + coin.high_24h + "€" }}
+            </td>
+            <td class="mobile-none low_res">{{ "-" + coin.low_24h + "€" }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        class="pager"
+        (pageChange)="p = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+  <!---Trade table-->
+  <div class="trade-div">
+    <div class="flex">
+      <div>
+        <p>Trending stocks</p>
+      </div>
+      <div class="bar_ch">
+        <span class="material-symbols-outlined"> bar_chart </span>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Company name</th>
+            <th scope="col" class="mob">Currency</th>
+            <th scope="col">Price</th>
+            <th scope="col" class="mob">Market Cap</th>
+            <th scope="col high_res" class="highes">
+              Week high
+              <span class="material-symbols-outlined high">
+                arrow_drop_up
+              </span>
+            </th>
+            <th scope="col low_res" class="lowes">
+              Week low
+              <span class="material-symbols-outlined low">
+                arrow_drop_down
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ appleTrades.companyName }}</th>
+            <td class="symbol_res" class="mob">{{ appleTrades.currency }}</td>
+            <td class="symbol_res">{{ appleTrades.latestPrice }}</td>
+            <td class="symbol_res" class="mob">{{ appleTrades.marketCap }}</td>
+            <td class="high_res">{{ "+" + appleTrades.week52High }}</td>
+            <td class="low_res">{{ "-" + appleTrades.week52Low }}</td>
+          </tr>
+          <tr>
+            <th scope="row">{{ avgo.companyName }}</th>
+            <td class="symbol_res" class="mob">{{ avgo.currency }}</td>
+            <td class="symbol_res">{{ avgo.latestPrice }}</td>
+            <td class="symbol_res" class="mob">{{ avgo.marketCap }}</td>
+            <td class="high_res">{{ "+" + avgo.week52High }}</td>
+            <td class="low_res">{{ "-" + avgo.week52Low }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <div>
+      <p>
+        &copy; Copyright | Angular Developement, Design, UI/UX Design by Kinar Sardhara
+      </p>
+    </div>
+  </footer>
+</div>

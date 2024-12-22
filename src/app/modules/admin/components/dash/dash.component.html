@@ -1,0 +1,15 @@
+<app-navigation></app-navigation>
+<div class="flex">
+  <div class="side">
+    <button (click)="toggleMenu()">
+      <span class="material-icons md-36">menu</span>
+    </button>
+    <app-side-menu
+      [showIcons]="showIcons"
+      [@slideInOut]="menuState"
+    ></app-side-menu>
+  </div>
+  <div class="router">
+    <router-outlet></router-outlet>
+  </div>
+</div>

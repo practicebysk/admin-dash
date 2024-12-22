@@ -1,0 +1,39 @@
+{
+  "sidemenu": [
+    {
+      "id": 1,
+      "name": "E-Commerc",
+      "icon": "shopping_cart"
+    },
+    {
+      "id": 2,
+      "name": "Dashboard",
+      "icon": "house"
+    },
+    {
+      "id": 3,
+      "name": "Forms",
+      "icon": "draw"
+    },
+    {
+      "id": 4,
+      "name": "Charts",
+      "icon": "bar_chart"
+    },
+    {
+      "id": 5,
+      "name": "Auth",
+      "icon": "lock_person"
+    },
+    {
+      "id": 6,
+      "name": "Tables and Data",
+      "icon": "table"
+    },
+    {
+      "id": 7,
+      "name": "About",
+      "icon": "info"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+<div class="main-bg-color">
+  <div class="com-det">
+    <mat-card>
+      <mat-card-content>
+        <div class="head-txt">
+          <p>Company details</p>
+        </div>
+        <form [formGroup]="companyForm">
+          <table>
+            <tr>
+              <td>
+                <mat-form-field class="demo-full-width">
+                  <input
+                    matInput
+                    placeholder="Company name"
+                    formControlName="company"
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr class="flex-col">
+              <td>
+                <mat-form-field class="demo-full-width">
+                  <input
+                    matInput
+                    placeholder="First Name"
+                    formControlName="fname"
+                  />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="demo-full-width">
+                  <input
+                    matInput
+                    placeholder="Last Name"
+                    formControlName="lname"
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <mat-form-field class="demo-full-width">
+                  <textarea
+                    matInput
+                    placeholder="Address"
+                    matTextareaAutosize
+                    matAutosizeMinRows="2"
+                    matAutosizeMaxRows="5"
+                    formControlName="adress"
+                  ></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field class="demo-full-width">
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    placeholder="Date of birth"
+                    formControlName="date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr class="flex-col">
+              <td>
+                <span>Gender</span><br /><br />
+                <mat-radio-group formControlName="gender" class="gender">
+                  <mat-radio-button value="male">Male</mat-radio-button>
+                  <mat-radio-button value="female">Female</mat-radio-button>
+                </mat-radio-group>
+              </td>
+              <td>
+                <br />
+                <mat-form-field>
+                  <mat-select
+                    placeholder="Business size"
+                    [(value)]="selected"
+                    formControlName="size"
+                  >
+                    <mat-option>-- Select any --</mat-option>
+                    <mat-option value="1">0-50</mat-option>
+                    <mat-option value="2">50-150</mat-option>
+                    <mat-option value="3">150-300</mat-option>
+                    <mat-option value="4">300+</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field class="demo-full-width mt-2">
+                  <input matInput placeholder="Email" formControlName="email" />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="content-center">
+                <button
+                  (click)="onSubmit()"
+                  mat-raised-button
+                  color="accent"
+                  class="m-1"
+                >
+                  Submit
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <footer>
+    <div>
+      <p>
+        &copy; Copyright | Angular Developement, Design, UI/UX Design by Kinar Sardhara
+      </p>
+    </div>
+  </footer>
+</div>

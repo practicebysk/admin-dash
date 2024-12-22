@@ -1,0 +1,39 @@
+<div class="main-side-div">
+  <div class="list">
+    <hr id="hr" />
+    <div class="side-flex">
+      <div>
+        <li *ngFor="let icon of side">
+          <div>
+            <a class="aa" [routerLink]="icon.route">
+              <span class="material-icons md-36 ic">{{ icon.icon }}</span
+              ><span>{{ icon.name }}</span></a
+            >
+          </div>
+          <div *ngIf="showIcons">
+            <button class="button-icons" [routerLinkActive]="'is-active'">
+              <a [routerLink]="icon.route"
+                ><span class="material-icons md-36 margint">{{
+                  icon.icon
+                }}</span></a
+              >
+            </button>
+          </div>
+        </li>
+      </div>
+      <div>
+        <hr id="hrr" />
+        <li>
+          <div (click)="onLogout()">
+            <span class="material-icons md-36 ic">logout</span> Logout
+          </div>
+          <div *ngIf="showIcons">
+            <button (click)="onLogout()" class="button-icons">
+              <span class="material-icons md-36">logout</span>
+            </button>
+          </div>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

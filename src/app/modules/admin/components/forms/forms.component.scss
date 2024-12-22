@@ -1,0 +1,51 @@
+.main-form {
+  width: 600px;
+  padding: 20px;
+  background: var(--side-menu-nav);
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  p {
+    font-size: 21px;
+    font-weight: 500;
+  }
+  .lastname {
+    margin-left: 6px;
+  }
+  .text-area {
+    height: 150px;
+  }
+  .form-control {
+    background: var(--form-input);
+    color: var(--text-color);
+  }
+}
+
+.checkbox-div {
+  padding: 25px;
+  background: var(--side-menu-nav);
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  max-width: 370px;
+  margin-left: 30px;
+  p {
+    font-size: 21px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 750px) {
+  .mobile-flex {
+    flex-direction: column-reverse;
+  }
+  .checkbox-div {
+    margin: 0 0 20px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-form {
+    max-width: 600px;
+    padding: 20px 6px;
+    width: auto;
+  }
+}

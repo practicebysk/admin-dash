@@ -1,0 +1,37 @@
+<div class="main-bg-color">
+  <div class="form-div">
+    <div class="form-header">
+      <p>Fill the form for a new account instance</p>
+    </div>
+    <form autocomplete="off" #regForm="ngForm">
+      <div class="form-group">
+        <label for="">Email</label>
+        <input
+          type="text"
+          class="form-control inpt"
+          name="email"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group mt-3">
+        <label for="">Password</label>
+        <input
+          type="password"
+          class="form-control inpt"
+          name="password"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group-btn">
+        <button (click)="onReg(regForm)">Submit</button>
+      </div>
+    </form>
+    <hr />
+    <div class="flex secure">
+      <span class="material-symbols-outlined shield"> shield </span>
+      <p>Your account is secure with Firebase!</p>
+    </div>
+  </div>
+</div>

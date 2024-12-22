@@ -1,0 +1,109 @@
+<div class="flex">
+  <div class="main-auth-div">
+    <div class="loader" *ngIf="isLoading">
+      <app-spinner class="spin"></app-spinner>
+    </div>
+
+    <div class="center">
+      <div class="login-div">
+        <div class="header">
+          <div class="login-txt">
+            <p>{{ isLoginMode ? "Please log in" : "Please sign up" }}</p>
+          </div>
+          <div class="label-div">
+            <p>The most powerfull admin dashboard based on Angular 14+</p>
+          </div>
+          <div class="inpts">
+            <form #authForm="ngForm">
+              <div *ngIf="!isLoginMode">
+                <div class="inpt">
+                  <label for="name" class="lbl">First name</label>
+                  <input
+                    name="namee"
+                    ngModel
+                    type="text"
+                    id="name"
+                    class="form-control"
+                  />
+                </div>
+                <div class="inpt">
+                  <label for="last" class="lbl">Last name</label>
+                  <input
+                    type="text"
+                    id="last"
+                    class="form-control"
+                    name="last"
+                    ngModel
+                  />
+                </div>
+              </div>
+              <div class="inpt">
+                <label for="email" class="lbl">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  name="email"
+                  ngModel
+                  required
+                  email
+                />
+              </div>
+              <div class="inpt">
+                <label for="pass" class="lbl">Password</label>
+                <input
+                  type="password"
+                  id="pass"
+                  class="form-control"
+                  name="password"
+                  ngModel
+                  required
+                  autocomplete="new-password"
+                />
+              </div>
+              <div class="btn-div">
+                <button class="sub" type="submit" (click)="onSubmit(authForm)">
+                  {{ isLoginMode ? "Login" : "Sign Up" }}
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="mt-4 cont-div">
+            <p>Or continue with your social profile</p>
+            <div class="flex icon-div">
+              <div>
+                <i class="fa-brands fa-facebook"></i>
+              </div>
+              <div>
+                <i class="fa-brands fa-twitter"></i>
+              </div>
+              <div>
+                <i class="fa-brands fa-google-plus"></i>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoginMode" class="log-reg">
+            <p>
+              Don't have an account register:
+              <a (click)="onSwitchMode()">Register</a>
+            </p>
+          </div>
+          <div *ngIf="!isLoginMode" class="log-reg">
+            <p>
+              Already have an account log in:
+              <a (click)="onSwitchMode()">Log in</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="img-div">
+    <div>
+      <img
+        src="../../assets/images/slidebean-J3AV8F-B42M-unsplash.jpg"
+        alt=""
+      />
+    </div>
+  </div>
+</div>

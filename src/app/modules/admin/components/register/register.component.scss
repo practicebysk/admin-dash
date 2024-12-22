@@ -1,0 +1,37 @@
+.form-div {
+  background: var(--side-menu-nav);
+  border-radius: 5px;
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+  padding: 25px;
+  max-width: 500px;
+  .form-group-btn {
+    button {
+      border-radius: 5px;
+      height: 35px;
+      color: #ffffff;
+      background: #0d6efd;
+      margin: 10px 0;
+      width: 100%;
+      border: 1px;
+    }
+  }
+  .secure {
+    margin-top: 20px;
+    p {
+      font-size: 13px;
+      opacity: 0.9;
+      color: var(--text-color);
+      margin: 3px 0 0 4px;
+    }
+  }
+  .inpt {
+    background: var(--form-input);
+    color: var(--text-color);
+  }
+
+  label {
+    font-size: 14px;
+    color: var(--text-color);
+  }
+}

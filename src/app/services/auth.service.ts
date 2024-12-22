@@ -48,8 +48,7 @@ export class AuthService {
   }
   /// Login ////
   login(email: string, password: string) {
-    // console.log(process);
-    const apiKey = process?.env['API_KEY'];
+    const apiKey = process?.env?.['API_KEY'];
     return this.http
       .post<AuthResponseData>(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`,

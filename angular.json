@@ -76,11 +76,6 @@
             },
             "development": {
               "browserTarget": "admin-dash:build:development"
-            },
-            "options": {
-              "customWebpackConfig": {
-                "path": "./webpack.config.js"
-              }
             }
           },
           "defaultConfiguration": "development"
